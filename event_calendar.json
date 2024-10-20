@@ -1,0 +1,132 @@
+{
+	"id": "dev.pawelwiejkut.event_calendar",
+	"version": "1.6.3",
+	"name": "Event Calendar",
+	"description": "Monthly calendar with event display support.",
+	"newInstancePrefix": "EventCalendar",
+	"icon": "",
+	"vendor": "Pawel WIejkut",
+	"eula": "",
+	"license": "MIT License",
+	"webcomponents": [
+		{
+			"kind": "main",
+			"tag": "dev-event-calendar",
+			"url": "https://nginx.pwi.ovh/event_calendar/main.js",
+			"integrity": "",
+			"ignoreIntegrity": true
+		}
+	],
+	"properties": {
+		"color": {
+			"type": "string",
+			"description": "Background color",
+			"default": "red"
+		},
+		"opacity": {
+			"type": "number",
+			"description": "Opacity",
+			"default": 1
+		},
+		"width": {
+			"type": "integer",
+			"default": 100
+		},
+		"height": {
+			"type": "integer",
+			"default": 100
+		}
+	},
+	"dataBindings": {
+		"myDataSource": {
+			"feeds": [
+				{
+		  "id": "dimensions",
+		  "description": "Dimensions",
+		  "type": "dimension"
+		},
+		{
+		  "id": "measures",
+		  "description": "Measures",
+		  "type": "mainStructureMember"
+		}
+			]
+		}
+	},
+  "methods": {
+	
+	"openSelectModelDialog": {
+	  "parameters": [],
+	  "body": "this.dataBindings.getDataBinding('myDataSource').openSelectModelDialog();"
+	},
+	"getDimensions": {
+	  "parameters": [],
+	  "body": "return this.dataBindings.getDataBinding('myDataSource').getDataSource().getDimensions();",
+	  "returnType": "DimensionInfo[]"
+	},
+	"getMeasures": {
+	  "parameters": [],
+	  "body": "return this.dataBindings.getDataBinding('myDataSource').getDataSource().getMeasures();",
+	  "returnType": "MeasureInfo[]"
+	},
+	"addDimension": {
+	  "parameters": [
+		{
+		  "name": "dimensionId",
+		  "type": "string"
+		}
+	  ]
+	},
+	"addMeasure": {
+	  "parameters": [
+		{
+		  "name": "measureId",
+		  "type": "string"
+		}
+	  ]
+	},
+	"removeDimension": {
+	  "parameters": [
+		{
+		  "name": "dimensionId",
+		  "type": "string"
+		}
+	  ]
+	},
+	"removeMeasure": {
+	  "parameters": [
+		{
+		  "name": "measureId",
+		  "type": "string"
+		}
+	  ]
+	},
+	"getDimensionsOnFeed": {
+	  "parameters": [],
+	  "returnType": "string[]"
+	},
+	"getMeasuresOnFeed": {
+	  "parameters": [],
+	  "returnType": "string[]"
+	},
+	"getDataSource": {
+	  "parameters": [],
+	  "body": "return this.dataBindings.getDataBinding('myDataSource').getDataSource();",
+	  "returnType": "DataSource"
+	},
+	"setModel": {
+	  "parameters": [
+		{
+		  "name": "modelId",
+		  "type": "string"
+		}
+	  ],
+	  "body": "this.dataBindings.getDataBinding('myDataSource').setModel(modelId);"
+	}
+
+  },
+  "events": {
+	"onClick": {
+	  "description": "called when the result set of the widget changes"
+	}
+}}
