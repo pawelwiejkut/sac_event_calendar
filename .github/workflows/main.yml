@@ -26,8 +26,8 @@ jobs:
       uses: ncipollo/release-action@v1.12.0
       with:
        artifacts: "release.zip"
-       allowUpdates: true
        token: ${{ secrets.GITHUB_TOKEN }}
+       allowUpdates: true
 
 
 
