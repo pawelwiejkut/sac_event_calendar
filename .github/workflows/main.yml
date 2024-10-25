@@ -20,6 +20,7 @@ jobs:
       with:
         type: 'zip'
         filename: 'release.zip'
+        allowUpdates: true
         exclusions: '*.git* /*node_modules/* .editorconfig'
         
     - name: Upload Release
