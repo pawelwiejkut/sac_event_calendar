@@ -1,9 +1,7 @@
 (function () {
   let template = document.createElement("template");
   template.innerHTML = `
-		<style>
-
-				<style>
+	 <style>
 
 		.header {
 			display: flex;
@@ -15,20 +13,19 @@
 		.calendar {
 			display: grid;
 			grid-template-columns: repeat(7, 1fr);
-			grid-gap: 2px; /* Ustawienie odstępu między dniami */
+			grid-gap: 2px; 
 			text-align: center;
 			position: relative;
             			z-index: 1;
 		}
 
 		.day {
-			border: 1px solid #ddd; /* Ustawienie linii dla dni */
+			border: 1px solid #ddd; 
 			display: flex;
 			flex-direction: column;
 			position: relative;
 			height: 150px;
 			z-index: 1;
-			 /* Zapobiegaj przewijaniu zdarzeń */
 		}
 
 		.day-number {
@@ -48,7 +45,7 @@
 
 		.event-item {
 			position: absolute;
-			margin: 0; /* Usunięcie marginesów */
+			margin: 0; 
 			padding: 5px;
 			background-color: #e0f7fa;
 			font-size: 12px;
@@ -58,11 +55,10 @@
 			z-index: 10;
 		}
 
-		/* Dostosowanie dla wielodniowych wydarzeń */
 		.event-item.continuous {
         			border-radius: 0px;
-			width: 100% ; /* Pełna szerokość */
-			background-color: #b3e5fc; /* Opcjonalnie: zmiana koloru tła */
+			width: 100% ; 
+			background-color: #b3e5fc; 
             			z-index: 10;
                           position: absolute;
                           
@@ -79,6 +75,7 @@
 			padding: 5px;
 			font-size: 14px;
 		}
+
 		</style>
 
 		<div class="header">
@@ -124,101 +121,7 @@
 
     async render() {
       if (!this._myDataSource || this._myDataSource.state !== "success") {
-        this.events = [
-          {
-            startDate: "2024-10-01T15:00:00",
-            endDate: "2024-10-04T12:00:00",
-            event: "Birthday Party",
-          },
-          {
-            startDate: "2024-10-01T10:00:00",
-            endDate: "2024-10-04T18:00:00",
-            event: "Work",
-          },
-          {
-            startDate: "2024-10-02T15:00:00",
-            endDate: "2024-10-05T12:00:00",
-            event: "One position",
-          },
-          {
-            startDate: "2024-10-02T23:59:00",
-            endDate: "2024-10-04T00:00:00",
-            event: "Test 3",
-          },
-
-          {
-            startDate: "2024-10-16T01:59:00",
-            endDate: "2024-10-17T06:00:00",
-            event: "Test 3",
-          },
-
-          {
-            startDate: "2024-10-12T14:00:00",
-            endDate: "2024-10-13T16:00:00",
-            event: "Meeting",
-          },
-
-          {
-            startDate: "2024-10-19T10:35:00",
-            endDate: "2024-10-22T16:00:00",
-            event: "Semi-Week",
-          },
-          {
-            startDate: "2024-10-25T00:00:00",
-            endDate: "2024-10-25T16:00:00",
-            event: "One Day",
-          },
-          {
-            startDate: "2024-10-26T09:00:00",
-            endDate: "2024-10-26T22:00:00",
-            event: "One Day",
-          },
-
-          {
-            startDate: "2024-10-30T09:00:00",
-            endDate: "2024-11-26T22:00:00",
-            event: "One Day",
-          },
-
-          {
-            startDate: "2024-10-07T01:00:00",
-            endDate: "2024-10-08T23:59:00",
-            event: "Hour test",
-          },
-
-          {
-            startDate: "2024-10-06T11:00:00",
-            endDate: "2024-10-11T23:59:00",
-            event: "Hour test",
-          },
-
-          {
-            startDate: "2024-10-03T01:00:00",
-            endDate: "2024-10-05T23:59:00",
-            event: "Hour test",
-          },
-
-          {
-            startDate: "2024-10-05T01:00:00",
-            endDate: "2024-10-06T23:59:00",
-            event: "Hour test",
-          },
-          {
-            startDate: "2024-10-05T01:00:00",
-            endDate: "2024-10-06T23:59:00",
-            event: "Hour test",
-          },
-          {
-            startDate: "2024-10-05T01:00:00",
-            endDate: "2024-10-06T23:59:00",
-            event: "Hour test",
-          },
-          {
-            startDate: "2024-10-05T01:00:00",
-            endDate: "2024-10-06T23:59:00",
-            event: "Hour test",
-          },
-        ];
+        return;
       } else {
         const startTimestamp =
           this._myDataSource.metadata.feeds.dimensions.values[0];
@@ -349,26 +252,25 @@
 
         let l = 0;
 
-        eventsForDay.forEach((event) => {
-
-
-        });
+        eventsForDay.forEach((event) => {});
 
         eventsForDay.forEach((event) => {
-            if (event.position != null) {
-                [eventsForDay[z], eventsForDay[event.position]] = [eventsForDay[event.position], eventsForDay[z]];
-              }
+          if (event.position != null) {
+            [eventsForDay[z], eventsForDay[event.position]] = [
+              eventsForDay[event.position],
+              eventsForDay[z],
+            ];
+          }
           if (event.position == null) {
             event.position = z;
           }
           z++;
         });
-        
 
         eventsForDay.forEach((event) => {
           l++;
 
-          if (typeof event == 'undefined'){
+          if (typeof event == "undefined") {
             return;
           }
 
@@ -478,14 +380,6 @@
         this.maxEvents = parseInt(changedProperties.maxEvents);
         this.renderCalendar();
       }
-    }
-
-    moveElement(arr, fromIndex, toIndex) {
-      return arr.map((item, index) => {
-        if (index === toIndex) return arr[fromIndex];
-        if (index === fromIndex) return arr[toIndex];
-        return item;
-      });
     }
 
     convertMiliseconds(miliseconds, format) {
