@@ -25,7 +25,9 @@ Order of dimensions is important:
 
 ## Installation
 
-[Download latest zip release](https://github.com/pawelwiejkut/sac_event_calendar/releases/tag/latest)
+1. [Download latest zip release](https://github.com/pawelwiejkut/sac_event_calendar/releases/tag/latest)
+2. Extract only event_calendar.json, and do not remove zip
+3. Load event_calendar.json to SAC, and attach downloaded zip file
 
 ## License
 
