@@ -37,8 +37,8 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add event_calendar.json
           git commit -m "Update URL field in JSON file"
-          git tag ${{ steps.semantic_release_info.outputs.git_tag }}
-          git push origin main    
+          git tag latest
+          git push origin HEAD:main   
         
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
