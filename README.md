@@ -4,6 +4,7 @@ SAC Custom Widget Event Monthly Calendar
 ## Requirements:
 
 1 Dummy Measure
+
 3 Dimensions:
   1. Start date - timestamp format [YYYYMMDDHHMMSS],
   2. End date - timestamp format [YYYYMMDDHHMMSS],
