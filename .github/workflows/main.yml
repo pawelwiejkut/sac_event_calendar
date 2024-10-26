@@ -22,6 +22,10 @@ jobs:
         file: event_calendar.json
         field: webcomponents[0].ignoreIntegrity  
         value: false
+
+    - name: Check cahnges
+      run: |
+          cat event_calendar.json
     
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
@@ -29,6 +33,7 @@ jobs:
         type: 'zip'
         filename: 'release.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
+        
               
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
