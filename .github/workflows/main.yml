@@ -11,7 +11,7 @@ jobs:
 
     - name: SHA
       run: |
-         echo ::set-env name=SHA::$(shasum -a 256 main.js))
+         echo ::set-env name=SHA::$(shasum -a 256 main.js)
 
     - name: Replace path
       uses: jossef/action-set-json-field@v2.1
