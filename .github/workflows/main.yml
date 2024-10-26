@@ -11,8 +11,8 @@ jobs:
 
     - name: Get SHA
       run: |
-           SHA="sha256-$(shasum -a 256 main.js | awk '{ print $1 }')"
-           echo "SHA=$SHA" >> $GITHUB_ENV
+          SHA="sha256-$(shasum -a 256 main.js | awk '{print $1}' | xxd -r -p | base64)"
+          echo "SHA=$SHA" >> $GITHUB_ENV
 
     - name: Replace path
       run: |
