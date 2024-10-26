@@ -29,6 +29,21 @@ jobs:
         type: 'zip'
         filename: 'release.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
+
+
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git commit -m "docs(): bumping release ${{ steps.semantic_release_info.outputs.git_tag }}"
+        git tag ${{ steps.semantic_release_info.outputs.git_tag }}
+        
+    - name: Push changes
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ github.token }}
+        tags: true
         
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
