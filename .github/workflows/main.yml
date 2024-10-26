@@ -35,7 +35,7 @@ jobs:
       run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add path/to/your/file.json
+          git add event_calendar.json
           git commit -m "Update URL field in JSON file"
           git tag ${{ steps.semantic_release_info.outputs.git_tag }}
           git push      
