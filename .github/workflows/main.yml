@@ -11,7 +11,8 @@ jobs:
 
     - name: Get SHA
       run: |
-         echo "SHA=$(shasum -a 256 main.js)" >> $GITHUB_ENV
+           SHA=$(shasum -a 256 main.js | awk '{ print $1 }')
+           echo "SHA=$SHA" >> $GITHUB_ENV
 
 
     - name: Replace path
@@ -31,9 +32,10 @@ jobs:
     - name: Generate SHA
       uses: jossef/action-set-json-field@v2.1
       with:
-        file: event_calendar.json
-        field: webcomponents.0.integrity  
-        value: ${{ SHA }} 
+         file: event_calendar.json
+         field: webcomponents.0.integrity  
+         value: "${{ env.SHA }}" 
+        
 
     - name: Check changes
       run: |
