@@ -11,7 +11,7 @@ jobs:
 
     - name: Get SHA
       run: |
-         echo "MY_ENV_VAR=$(shasum -a 256 main.js)" >> $GITHUB_ENV
+         echo "SHA=$(shasum -a 256 main.js)" >> $GITHUB_ENV
 
 
     - name: Replace path
@@ -33,7 +33,7 @@ jobs:
       with:
         file: event_calendar.json
         field: webcomponents.0.integrity  
-        value: ${{ env.SHA }} 
+        value: ${{ SHA }} 
 
     - name: Check changes
       run: |
