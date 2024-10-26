@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    - uses: actions/checkout@master
+
     - name: Update my-file.json description
       uses: jossef/action-set-json-field@v2.1
       with:
@@ -14,7 +16,6 @@ jobs:
         field: webcomponents[1].url
         value: /main.js
     
-    - uses: actions/checkout@master
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
