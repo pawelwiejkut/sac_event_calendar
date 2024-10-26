@@ -28,7 +28,7 @@ jobs:
       with:
         file: event_calendar.json
         field: webcomponents.0.integrity  
-        value: ${{ shasum -a 256 main.js }}
+        value: $(shasum -a 256 main.js) 
 
     - name: Check changes
       run: |
