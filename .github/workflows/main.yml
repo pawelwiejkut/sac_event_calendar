@@ -9,6 +9,10 @@ jobs:
 
     - uses: actions/checkout@master
 
+    - name: SHA
+      run: |
+         echo ::set-env name=SHA::$(shasum -a 256 main.js)')
+
     - name: Replace path
       uses: jossef/action-set-json-field@v2.1
       with:
@@ -28,7 +32,7 @@ jobs:
       with:
         file: event_calendar.json
         field: webcomponents.0.integrity  
-        value: $(shasum -a 256 main.js) 
+        value: ${{ env.SHA }} 
 
     - name: Check changes
       run: |
